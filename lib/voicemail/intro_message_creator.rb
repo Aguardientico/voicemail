@@ -13,7 +13,7 @@ module Voicemail
     end
 
     def time_message
-      case config.numeric_method
+      case config.numeric_method.to_sym
       when :i18n_string
         t 'voicemail.messages.message_received_on_x', received_on: I18n.localize(@current_message[:received])
       when :play_numeric
@@ -27,7 +27,7 @@ module Voicemail
     end
 
     def from_message
-      case config.numeric_method
+      case config.numeric_method.to_sym
       when :i18n_string
         t 'voicemail.messages.message_received_from_x', from: from_string
       when :play_numeric
